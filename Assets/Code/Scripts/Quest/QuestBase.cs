@@ -6,7 +6,7 @@ namespace GameSystem.Quest
 {
     public abstract class QuestBase<T> : ScriptableObject
     {
-        protected abstract T CompareTarget { get; }
+        protected abstract T CompareSource { get; }
         protected UnityAction OnCompleted;
 
         private bool isCompleted = false;
@@ -15,9 +15,9 @@ namespace GameSystem.Quest
 
         public abstract QuestBase<T> ObjectiveAs(T missionObjective);
 
-        public QuestBase<T> WithReward(UnityAction gift)
+        public QuestBase<T> WithReward(UnityAction reward)
         {
-            OnCompleted += gift;
+            OnCompleted += reward;
             return this;
         }
 

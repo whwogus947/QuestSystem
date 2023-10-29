@@ -4,7 +4,7 @@ namespace GameSystem.Quest
     public class CountQuest : QuestBase<int>
     {
         public int targetCount;
-        protected override int CompareTarget => targetCount;
+        protected override int CompareSource => targetCount;
 
         public override bool IsEqual(IComparableObjective<int> other)
         {

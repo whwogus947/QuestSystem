@@ -7,7 +7,7 @@ namespace GameSystem.Quest
     public class SearchQuest : QuestBase<GameObject>
     {
         public WorldItem item;
-        protected override GameObject CompareTarget => item.model;
+        protected override GameObject CompareSource => item.model;
 
         public override bool IsEqual(IComparableObjective<GameObject> other)
         {
