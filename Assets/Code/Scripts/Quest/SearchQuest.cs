@@ -11,9 +11,18 @@ namespace GameSystem.Quest
         public WorldItem item;
         protected override GameObject CompareTarget => item.model;
 
-        public override bool IsEqual(GameObject other)
+        public override bool IsEqual(IComparableObjective<GameObject> other)
         {
-            throw new System.NotImplementedException();
+            if (other.MissionObjective == null || item.model == null) 
+                return false;
+
+            return item.model.name == other.MissionObjective.name;
+        }
+
+        public override QuestBase<GameObject> ObjectiveAs(GameObject missionObjective)
+        {
+            item.model = missionObjective;
+            return this;
         }
     }
 }

@@ -8,23 +8,22 @@ namespace GameSystem.Quest
 {
     public abstract class QuestBase<T> : ScriptableObject
     {
+        protected abstract T CompareTarget { get; }
         protected UnityAction OnCompleted;
 
         private bool isCompleted = false;
 
-        protected abstract T CompareTarget { get; }
+        public abstract bool IsEqual(IComparableObjective<T> other);
 
-        public abstract bool IsEqual(T other);
+        public abstract QuestBase<T> ObjectiveAs(T missionObjective);
 
-        public void Accept(UnityAction gift)
+        public QuestBase<T> WithReward(UnityAction gift)
         {
-            if (isCompleted)
-                return;
-
             OnCompleted += gift;
+            return this;
         }
 
-        public bool TryComplete(T other)
+        public bool TryComplete(IComparableObjective<T> other)
         {
             if (IsEqual(other) && !isCompleted && OnCompleted != null)
             {
@@ -33,6 +32,11 @@ namespace GameSystem.Quest
                 return true;
             }
             return false;
+        }
+
+        public void Accept()
+        {
+            isCompleted = false;
         }
     }
 }

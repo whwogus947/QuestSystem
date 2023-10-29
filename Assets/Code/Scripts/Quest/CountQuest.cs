@@ -7,11 +7,18 @@ namespace GameSystem.Quest
 {
     public class CountQuest : QuestBase<int>
     {
-        protected override int CompareTarget => 1;
+        public int targetCount;
+        protected override int CompareTarget => targetCount;
 
-        public override bool IsEqual(int other)
+        public override bool IsEqual(IComparableObjective<int> other)
         {
-            throw new System.NotImplementedException();
+            return targetCount <= other.MissionObjective;
+        }
+
+        public override QuestBase<int> ObjectiveAs(int missionObjective)
+        {
+            targetCount = missionObjective;
+            return this;
         }
     }
 }

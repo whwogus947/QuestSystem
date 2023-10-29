@@ -10,6 +10,6 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 820762dd21e71c448ad08f49083cd35f, type: 3}
-  m_Name: New Search Quest
+  m_Name: Find Blue Cube
   m_EditorClassIdentifier: 
-  prefabe: {fileID: 0}
+  item: {fileID: 11400000, guid: d05e5d667c5b9ea4f93a1a8e8a93ba72, type: 2}
