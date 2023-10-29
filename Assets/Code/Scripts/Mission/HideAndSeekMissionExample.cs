@@ -4,7 +4,7 @@ using UnityEngine;
 
 namespace GameSystem.Quest
 {
-    public class ExampleMission : MonoBehaviour, IComparableObjective<GameObject>
+    public class HideAndSeekMissionExample : MonoBehaviour, IComparableObjective<GameObject>
     {
         public GameObject MissionObjective => FindOut();
         public List<SearchQuest> searchQuests;
