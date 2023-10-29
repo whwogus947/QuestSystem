@@ -9,7 +9,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 27417772d0e99cc48b35dff8bdf791a5, type: 3}
-  m_Name: New Find Out Hidden
+  m_Script: {fileID: 11500000, guid: 820762dd21e71c448ad08f49083cd35f, type: 3}
+  m_Name: New Search Quest
   m_EditorClassIdentifier: 
-  asd: {fileID: 0}
+  prefabe: {fileID: 0}

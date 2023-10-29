@@ -6,7 +6,6 @@ namespace GameSystem.Quest
 {
     public class WorldItem : ScriptableObject
     {
-        public string itemName;
-        public GameObject itemPrefab;
+        public GameObject model;
     }
 }
