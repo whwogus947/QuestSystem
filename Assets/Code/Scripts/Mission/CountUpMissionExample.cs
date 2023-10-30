@@ -4,24 +4,40 @@ using UnityEngine;
 
 namespace GameSystem.Quest
 {
-    public class HideAndSeekMissionExample : MonoBehaviour, IComparableObjective<GameObject>
+    public class CountUpMissionExample : MonoBehaviour, IComparableObjective<int>
     {
-        public GameObject MissionObjective => FindOut();
+        public int MissionObjective => conditionCount;
+        public CountQuest countQuest;
         public List<SearchQuest> searchQuests;
+        public MissionInstance<GameObject> MI
+        {
+            get
+            {
+                _MI.MissionObjective = FindOut();
+                return _MI;
+            }
+        }
+        private readonly MissionInstance<GameObject> _MI = new();
+        private int conditionCount = 0;
 
         void Start()
         {
+            countQuest.WithReward(() => SuccessLog("Main mission COMPLETE!")).Accept();
             searchQuests.ForEach(x => x.
                 WithReward(() => SuccessLog(x.item.name)).
-                WithReward(() => Destroy(MissionObjective)).
+                WithReward(() => Destroy(MI.MissionObjective)).
+                WithReward(() => { conditionCount++; }).
+                WithReward(() => { x.Accept(); }).
                 Accept());
         }
 
+        // Update is called once per frame
         void Update()
         {
             if (Input.GetMouseButtonDown(0))
             {
-                searchQuests?.ForEach(quest => quest.TryComplete(this));
+                searchQuests?.ForEach(quest => quest.TryComplete(MI));
+                countQuest.TryComplete(this);
             }
         }
 

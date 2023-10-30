@@ -3,7 +3,7 @@ using UnityEngine;
 
 namespace GameSystem.Quest
 {
-    [CreateAssetMenu()]
+    [CreateAssetMenu(fileName = "Search Something", menuName = "Quest/Search")]
     public class SearchQuest : QuestBase<GameObject>
     {
         public WorldItem item;
