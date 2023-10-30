@@ -560,8 +560,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   searchQuests:
-  - {fileID: 11400000, guid: f98511bc0ccb1a44fabe26b73a81aae9, type: 2}
   - {fileID: 11400000, guid: 2af4b98386537f7468ab523bf34dc9df, type: 2}
+  - {fileID: 11400000, guid: f98511bc0ccb1a44fabe26b73a81aae9, type: 2}
   - {fileID: 11400000, guid: 4d710f3819908904d880db59a03d6822, type: 2}
 --- !u!4 &840895679
 Transform:

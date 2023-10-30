@@ -12,4 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 820762dd21e71c448ad08f49083cd35f, type: 3}
   m_Name: Find Yellow Cube
   m_EditorClassIdentifier: 
+  SubQuests:
+  - {fileID: 11400000, guid: f98511bc0ccb1a44fabe26b73a81aae9, type: 2}
+  - {fileID: 11400000, guid: 2af4b98386537f7468ab523bf34dc9df, type: 2}
   item: {fileID: 11400000, guid: c3692ec0c74bd364cbd317c2beb54d47, type: 2}

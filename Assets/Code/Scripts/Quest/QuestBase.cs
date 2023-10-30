@@ -1,13 +1,16 @@
 
+using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
 
 namespace GameSystem.Quest
 {
-    public abstract class QuestBase<T> : ScriptableObject
+    public abstract class QuestBase<T> : QuestableMission
     {
+        public List<QuestableMission> SubQuests;
+        public override bool IsCompleted => isCompleted;
+        public override UnityAction OnCompleted { get; set; }
         protected abstract T CompareSource { get; }
-        protected UnityAction OnCompleted;
 
         private bool isCompleted = false;
 
@@ -21,12 +24,23 @@ namespace GameSystem.Quest
             return this;
         }
 
+        public QuestBase<T> WithSubQuest(QuestableMission quest)
+        {
+            AddSubQuest(quest);
+            return this;
+        }
+
+        public QuestBase<T> AbstractSubQuest(QuestableMission quest)
+        {
+            RemoveSubQuest(quest);
+            return this;
+        }
+
         public bool TryComplete(IComparableObjective<T> other)
         {
             if (IsEqual(other) && !isCompleted && OnCompleted != null)
             {
-                isCompleted = true;
-                OnCompleted.Invoke();
+                MissionComplete();
                 return true;
             }
             return false;
@@ -35,6 +49,29 @@ namespace GameSystem.Quest
         public void Accept()
         {
             isCompleted = false;
+            SubQuests ??= new();
+        }
+
+        protected override void MissionComplete()
+        {
+            bool isAllSubQuestCompleted = SubQuests.Count <= 0 ? true : SubQuests.TrueForAll(x => x.IsCompleted);
+            if (isAllSubQuestCompleted)
+            {
+                isCompleted = true;
+                OnCompleted?.Invoke();
+            }
+        }
+
+        private void AddSubQuest(QuestableMission questable)
+        {
+            SubQuests.Add(questable);
+            questable.OnCompleted += MissionComplete;
+        }
+
+        private void RemoveSubQuest(QuestableMission questable)
+        {
+            questable.OnCompleted -= MissionComplete;
+            SubQuests.Remove(questable);
         }
     }
 }
