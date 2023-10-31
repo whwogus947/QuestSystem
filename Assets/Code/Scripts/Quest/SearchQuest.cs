@@ -17,6 +17,11 @@ namespace GameSystem.Quest
             return item.model.name == other.MissionObjective.name;
         }
 
+        public override bool IsEqual(GameObject other)
+        {
+            return other.name == item.model.name;
+        }
+
         public override QuestBase<GameObject> ObjectiveAs(GameObject missionObjective)
         {
             item.model = missionObjective;

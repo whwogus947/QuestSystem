@@ -12,5 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 18db9b204ef107c4b8bc86f514ec4a7d, type: 3}
   m_Name: Count Up 3
   m_EditorClassIdentifier: 
-  SubQuests: []
+  isLoop: 0
+  SubQuests:
+  - {fileID: 11400000, guid: f98511bc0ccb1a44fabe26b73a81aae9, type: 2}
   targetCount: 3

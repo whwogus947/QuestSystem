@@ -634,8 +634,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   countQuest: {fileID: 11400000, guid: 8a3019ab31be08a408f66b1313a846a1, type: 2}
-  searchQuests:
-  - {fileID: 11400000, guid: f98511bc0ccb1a44fabe26b73a81aae9, type: 2}
 --- !u!1 &963194225
 GameObject:
   m_ObjectHideFlags: 0

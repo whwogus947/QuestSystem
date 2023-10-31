@@ -19,5 +19,24 @@ namespace GameSystem.Quest
             targetCount = missionObjective;
             return this;
         }
+
+        public override void Accept()
+        {
+            base.Accept();
+            SubQuests.ForEach(quest => quest.isLoop = true);
+            SubQuests.ForEach(quest => quest.SetCompleted());
+        }
+
+        public bool IsSubQuestItem<T>(T item)
+        {
+            if (item == null) 
+                return false;
+            return SubQuests.Exists(mission => (mission as QuestBase<T>).IsEqual(item));
+        }
+
+        public override bool IsEqual(int other)
+        {
+            throw new System.NotImplementedException();
+        }
     }
 }
